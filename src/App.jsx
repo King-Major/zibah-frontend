@@ -16,6 +16,7 @@ import CartSidebar from './components/storefront/CartSidebar';
 import AuthModal from './components/storefront/AuthModal';
 import Checkout from './pages/storefront/Checkout';
 import VerifyPayment from './pages/storefront/VerifyPayment';
+import VerifyEmail from './pages/storefront/VerifyEmail';
 import Account from './pages/storefront/Account';
 import ProductDetails from './pages/storefront/ProductDetails';
 import About from './pages/storefront/About';
@@ -76,15 +77,16 @@ function App() {
         {/* Protected Admin Routes */}
         <Route path="/admin" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
 
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/about" element={<About />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/verify" element={<VerifyPayment />} />
+        <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/account" element={<Account />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/category" element={<CategoryPage />} />
         <Route path="/category/:slug" element={<CategoryPage />} />
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
