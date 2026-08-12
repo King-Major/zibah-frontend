@@ -5,6 +5,7 @@ import { useAuthStore } from '../../store/useAuthStore';
 import { Package, Download, Clock, Loader2, } from 'lucide-react';
 import StoreNavbar from '../../components/storefront/StoreNavbar';
 import StoreFooter from '../../components/storefront/StoreFooter';
+import FeedbackForm from '../../components/storefront/FeedbackForm';
 
 const Account = () => {
   const navigate = useNavigate();
@@ -145,6 +146,11 @@ const Account = () => {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Feedback Section */}
+        <div className="mt-12">
+          <FeedbackForm />
         </div>
 
         <StoreFooter />

@@ -9,6 +9,7 @@ import ProductsTable from './components/admin/ProductsTable';
 import Login from './pages/admin/Login';
 import OrdersTable from './components/admin/OrdersTable';
 import LocationsTable from './components/admin/LocationsTable';
+import FeedbacksTable from './components/admin/FeedbacksTable';
 
 // Storefront Components
 import Home from './pages/storefront/Home';
@@ -43,6 +44,7 @@ const Dashboard = () => {
       case 'products': return <ProductsTable />;
       case 'orders': return <OrdersTable />;
       case 'locations': return <LocationsTable />;
+      case 'feedbacks': return <FeedbacksTable />;
       case 'overview': return <div className="p-6 bg-white rounded-xl border border-gray-100 text-gray-500">Overview metrics will render here.</div>;
       default: return <div className="p-6 bg-white rounded-xl border border-gray-100 text-gray-500">Work in progress.</div>;
     }

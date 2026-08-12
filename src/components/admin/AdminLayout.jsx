@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Package, Users, Tags, Settings, LogOut, Menu, X, ChevronRight, ClipboardList, MapPin } from 'lucide-react';
+import { LayoutDashboard, Package, Users, Tags, Settings, LogOut, Menu, X, ChevronRight, ClipboardList, MapPin, MessageSquare } from 'lucide-react';
 
 const NavButton = ({ id, name, icon: Icon, isActive, onSelect }) => {
   return (
@@ -47,6 +47,7 @@ const AdminLayout = ({ children, activeTab, setActiveTab }) => {
         { id: 'orders', name: 'Orders', icon: ClipboardList },
         { id: 'vendors', name: 'Vendors', icon: Users },
         { id: 'locations', name: 'Locations', icon: MapPin },
+        { id: 'feedbacks', name: 'Feedbacks', icon: MessageSquare },
       ],
     },
     {
