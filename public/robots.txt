@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /account
+Disallow: /checkout
+Disallow: /verify
+Disallow: /verify-email
+
+Sitemap: https://www.zibahstores.com/sitemap.xml
