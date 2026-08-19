@@ -23,11 +23,11 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// Helpful debug when running locally to confirm which backend is used
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line no-console
-  console.info('Using API base URL:', API_BASE_URL);
-}
+// // Helpful debug when running locally to confirm which backend is used
+// if (typeof window !== 'undefined') {
+//   // eslint-disable-next-line no-console
+//   console.info('Using API base URL:', API_BASE_URL);
+// }
 
 api.interceptors.response.use(
   (response) => response,
