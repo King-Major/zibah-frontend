@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const normalizeBaseUrl = (value) => {
-  const fallback = 'https://zibah-backend.onrender.com';
+  const fallback = 'http://localhost:5000';
   if (typeof value !== 'string') return fallback;
 
   const trimValue = value.trim();
@@ -15,7 +15,7 @@ const normalizeBaseUrl = (value) => {
   }
 };
 
-export const API_BASE_URL = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL || 'https://zibah-backend.onrender.com');
+export const API_BASE_URL = normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000');
 
 const api = axios.create({
   baseURL: API_BASE_URL,

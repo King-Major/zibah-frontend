@@ -13,12 +13,7 @@ const getStoredToken = () => {
 };
 
 const sanitizeProductId = (value) => {
-  if (typeof value === 'number' && Number.isInteger(value) && value > 0) return value;
-  if (typeof value === 'string') {
-    const trimmed = value.trim();
-    if (/^\d+$/.test(trimmed)) return Number(trimmed);
-    if (/^[a-z0-9-]+$/i.test(trimmed)) return trimmed;
-  }
+  if (typeof value === 'string' && /^[a-f\d]{24}$/i.test(value.trim())) return value.trim();
   return null;
 };
 
@@ -32,7 +27,7 @@ export const useCartStore = create((set, get) => ({
   openCart: () => set({ isCartOpen: true }),
   closeCart: () => set({ isCartOpen: false }),
 
-  // 📥 FETCH CART FROM POSTGRESQL
+  // Fetch the current user's cart from the API.
   fetchCart: async () => {
     const token = getStoredToken();
     if (!token) {
@@ -51,7 +46,7 @@ export const useCartStore = create((set, get) => ({
     }
   },
 
-  // 📤 ADD TO POSTGRESQL
+  // Add an item through the API.
   addToCart: async (product) => {
     const token = getStoredToken();
 
@@ -78,7 +73,7 @@ export const useCartStore = create((set, get) => ({
     }
   },
 
-  // 🗑️ REMOVE FROM POSTGRESQL
+  // Remove an item through the API.
   removeFromCart: async (productId) => {
     const token = getStoredToken();
     if (!token) return;
