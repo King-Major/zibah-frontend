@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import api from '../../lib/api';
-import { X, Mail, Lock, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { X, UserRound, Mail, Lock, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import { useAuthStore } from '../../store/useAuthStore';
 
 const AuthModal = () => {
   const { isAuthModalOpen, closeAuthModal, setLogin } = useAuthStore();
   
   const [view, setView] = useState('login'); // 'login' | 'register' | 'success'
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ const AuthModal = () => {
     try {
       if (view === 'register') {
         // 1. Handle Registration
-        await api.post('/api/auth/register', { email, password });
+        await api.post('/api/auth/register', { name, email, password });
         setView('success');
       } else {
         // 2. Handle Login
@@ -48,6 +49,7 @@ const AuthModal = () => {
   const switchView = (newView) => {
     setView(newView);
     setError('');
+    setName('');
     setEmail('');
     setPassword('');
   };
@@ -97,6 +99,21 @@ const AuthModal = () => {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-5">
+              {view === 'register' && (
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-widest mb-2 ml-1">Full Name</label>
+                  <div className="relative">
+                    <input
+                      type="text" required maxLength={100} value={name} onChange={(e) => setName(e.target.value)}
+                      className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:outline-none focus:border-zibah-stores focus:ring-2 focus:ring-zibah-stores/20 transition-all text-base bg-slate-50"
+                      placeholder="Your full name"
+                      autoComplete="name"
+                    />
+                    <UserRound className="absolute left-4 top-4 text-slate-400" size={20} />
+                  </div>
+                </div>
+              )}
+
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-widest mb-2 ml-1">Email Address</label>
                 <div className="relative">
